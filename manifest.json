@@ -1,6 +1,6 @@
 {
   "name": "Owntracks",
-  "id": "owntracks_ynh",
+  "id": "owntracks",
   "packaging_format": 1,
   "description": {
     "en": "Owntracks (location history) package for YunoHost.",
