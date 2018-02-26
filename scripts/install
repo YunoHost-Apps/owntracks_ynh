@@ -60,6 +60,12 @@ ynh_app_setting_set $app path $path_url
 #=================================================
 # STANDARD MODIFICATIONS
 #=================================================
+# INSTALL DEPENDENCIES
+#=================================================
+
+ynh_install_app_dependencies php5-mysqlnd
+
+#=================================================
 # CREATE A MYSQL DATABASE
 #=================================================
 
