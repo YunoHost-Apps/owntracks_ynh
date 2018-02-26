@@ -1,48 +1,48 @@
 {
-  "name": "Owntracks",
-  "id": "owntracks",
-  "packaging_format": 1,
-  "description": {
-    "en": "Owntracks (location history) package for YunoHost.",
-    "fr": "Package Owntracks (historique de localisation) pour YunoHost."
-  },
-  "version": "1.0",
-  "url": "http://owntracks.org/",
-  "license": "free",
-  "maintainer": {
-    "name": "Titus PiJean",
-    "email": "tituspijean@outlook.com",
-    "url": "https://github.com/tituspijean/owntracks_ynh"
-  },
-  "requirements": {
-    "yunohost": ">= 2.7.2"
-  },
-  "multi_instance": true,
-  "services": [
-    "nginx",
-    "php5-fpm",
-    "mysql"
-  ],
-  "arguments": {
-    "install": [{
-        "name": "domain",
-        "type": "domain",
-        "ask": {
-          "en": "Choose a domain name for Owntracks",
-          "fr": "Choisissez un nom de domaine pour Owntracks"
-        },
-        "example": "example.com"
-      },
-      {
-        "name": "path",
-        "type": "path",
-        "ask": {
-          "en": "Choose a path for Owntracks",
-          "fr": "Choisissez un chemin pour Owntracks"
-        },
-        "example": "/owntracks",
-        "default": "/owntracks"
-      }
-    ]
-  }
+	"name": "Owntracks",
+	"id": "owntracks",
+	"packaging_format": 1,
+	"description": {
+		"en": "Owntracks (location history) package for YunoHost.",
+		"fr": "Package Owntracks (historique de localisation) pour YunoHost."
+	},
+	"version": "v0.1-beta.7",
+	"url": "http://owntracks.org/",
+	"license": "free",
+	"maintainer": {
+		"name": "Titus PiJean",
+		"email": "tituspijean@outlook.com",
+		"url": "https://github.com/tituspijean/owntracks_ynh"
+	},
+	"requirements": {
+		"yunohost": ">= 2.7.2"
+	},
+	"multi_instance": true,
+	"services": [
+		"nginx",
+		"php5-fpm",
+		"mysql"
+	],
+	"arguments": {
+		"install": [{
+				"name": "domain",
+				"type": "domain",
+				"ask": {
+					"en": "Choose a domain name for Owntracks",
+					"fr": "Choisissez un nom de domaine pour Owntracks"
+				},
+				"example": "example.com"
+			},
+			{
+				"name": "path",
+				"type": "path",
+				"ask": {
+					"en": "Choose a path for Owntracks",
+					"fr": "Choisissez un chemin pour Owntracks"
+				},
+				"example": "/owntracks",
+				"default": "/owntracks"
+			}
+		]
+	}
 }
