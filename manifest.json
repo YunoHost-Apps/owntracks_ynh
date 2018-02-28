@@ -6,7 +6,7 @@
 		"en": "Owntracks (location history) package for YunoHost.",
 		"fr": "Package Owntracks (historique de localisation) pour YunoHost."
 	},
-	"version": "v0.1-beta.7",
+	"version": "v0.1-beta.8",
 	"url": "http://owntracks.org/",
 	"license": "free",
 	"maintainer": {
