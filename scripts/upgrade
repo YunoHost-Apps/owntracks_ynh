@@ -89,7 +89,7 @@ ynh_add_fpm_config
 #=================================================
 # SPECIFIC UPGRADE
 #=================================================
-# ...
+# MODIFY A CONFIG FILE
 #=================================================
 
 ynh_replace_string "__USER__" "$app" "$final_path/config.inc.php"
