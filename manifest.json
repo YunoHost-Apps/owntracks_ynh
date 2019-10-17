@@ -3,8 +3,8 @@
 	"id": "owntracks",
 	"packaging_format": 1,
 	"description": {
-		"en": "Owntracks (location history) package for YunoHost.",
-		"fr": "Package Owntracks (historique de localisation) pour YunoHost."
+		"en": "Keep track of your location history",
+		"fr": "Gérez votre historique de géolocalisation"
 	},
 	"version": "0.1-beta.8",
 	"url": "http://owntracks.org/",
