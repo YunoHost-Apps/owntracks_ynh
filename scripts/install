@@ -22,6 +22,8 @@ ynh_abort_if_errors
 
 domain=$YNH_APP_ARG_DOMAIN
 path_url=$YNH_APP_ARG_PATH
+user=$YNH_APP_ARG_USER
+is_public=$YNH_APP_ARG_IS_PUBLIC
 
 # This is a multi-instance app, meaning it can be installed several times independently
 # The id of the app as stated in the manifest is available as $YNH_APP_ID
@@ -41,6 +43,11 @@ app=$YNH_APP_INSTANCE_NAME
 
 final_path=/var/www/$app
 test ! -e "$final_path" || ynh_die "This path already contains a folder"
+
+if [ $is_public -eq 1 ] && [ ! $user ]
+then
+    ynh_die "You must set up an user if owntracks is public"
+fi
 
 # Normalize the url path syntax
 path_url=$(ynh_normalize_url_path $path_url)
@@ -113,6 +120,11 @@ ynh_mysql_connect_as $app $db_pwd $db_name < "$final_path/sql/schema.sql"
 ynh_replace_string "__USER__" "$app" "$final_path/config.inc.php"
 ynh_replace_string "__DB_PWD__" "$db_pwd" "$final_path/config.inc.php"
 
+if [ $is_public -eq 1 ]
+then
+    ynh_replace_string "\$_SERVER\['PHP_AUTH_USER'\]" "$user" "$final_path/map_points.php"
+    ynh_app_setting_set $app unprotected_uris "/"
+fi
 #=================================================
 # STORE THE CHECKSUM OF THE CONFIG FILE
 #=================================================

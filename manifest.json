@@ -42,6 +42,32 @@
 				},
 				"example": "/owntracks",
 				"default": "/owntracks"
+			},
+			{
+				"name": "user",
+				"type": "user",
+				"ask": {
+					"en": "Choose an user for Owntracks",
+					"fr": "Choisissez un utilisateur pour Owntracks"
+				},
+				"help": {
+					"en": "If public, this user trace will be public ",
+					"fr": "Si publique, les traces de cet utilisateur seront publiques."
+				},
+				"optional": "true"
+			},
+			{
+				"name": "is_public",
+				"type": "boolean",
+				"ask": {
+					"en": "Is it a public application?",
+					"fr": "Est-ce une application publique ?"
+				},
+				"help": {
+					"en": "If public, anyone will be able to see the owntracks record from specified user.",
+					"fr": "Si publique, quiconque aura accès aux traces owntracks de l'utilisateur specifié."
+				},
+				"default": false
 			}
 		]
 	}
