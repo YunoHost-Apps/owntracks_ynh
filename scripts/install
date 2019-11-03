@@ -125,6 +125,7 @@ then
     ynh_replace_string "\$_SERVER\['PHP_AUTH_USER'\]" "$user" "$final_path/map_points.php"
     ynh_app_setting_set $app unprotected_uris "/"
 fi
+
 #=================================================
 # STORE THE CHECKSUM OF THE CONFIG FILE
 #=================================================

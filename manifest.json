@@ -51,7 +51,7 @@
 					"fr": "Choisissez un utilisateur pour Owntracks"
 				},
 				"help": {
-					"en": "If public, this user trace will be public ",
+					"en": "If public, this user's trace will be public.",
 					"fr": "Si publique, les traces de cet utilisateur seront publiques."
 				},
 				"optional": "true"
