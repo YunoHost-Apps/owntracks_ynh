@@ -18,7 +18,7 @@ app=$YNH_APP_INSTANCE_NAME
 
 domain=$(ynh_app_setting_get --app=$app --key=domain)
 path_url=$(ynh_app_setting_get --app=$app --key=path)
-admin=$(ynh_app_setting_get --app=$app --key=admin)
+user=$(ynh_app_setting_get --app=$app --key=user)
 is_public=$(ynh_app_setting_get --app=$app --key=is_public)
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 db_name=$(ynh_app_setting_get --app=$app --key=db_name)
@@ -62,13 +62,19 @@ if [ -z "$final_path" ]; then
 	ynh_app_setting_set --app=$app --key=final_path --value=$final_path
 fi
 
-# Having this line first is important
-ynh_app_setting_delete --app=$app --key=is_public
+### then you may safely remove these lines
 
-# Delete legacy permission settings
-ynh_app_setting_delete --app=$app --key=unprotected_uris
-ynh_app_setting_delete --app=$app --key=protected_uris
-ynh_app_setting_delete --app=$app --key=skipped_uris
+# Cleaning legacy permissions
+is_public=$(ynh_app_setting_get --app=$app --key=is_public)
+
+if [ -n "$is_public" ]; then
+	# Having this line first is important
+	ynh_app_setting_delete --app=$app --key=is_public
+	# Delete legacy permission settings
+	ynh_app_setting_delete --app=$app --key=unprotected_uris
+	ynh_app_setting_delete --app=$app --key=protected_uris
+	ynh_app_setting_delete --app=$app --key=skipped_uris
+fi
 
 #=================================================
 # BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
@@ -146,21 +152,6 @@ ynh_replace_string --match_string="__DB_PWD__" --replace_string="$db_pwd" --targ
 
 # Set right permissions for curl installation
 chown -R $app:www-data $final_path
-
-#=================================================
-# SETUP PERMISSIONS
-#=================================================
-ynh_script_progression --message="Upgrading SSOwat configuration..."
-
-# Make app public if necessary
-if [ $is_public -eq 1 ]
-then
-	# Everyone can access the app.
-	# The "main" permission is automatically created before the install script.
-	ynh_permission_update --permission "main" --add "visitors"
-else
-	ynh_permission_update --permission "main" --add $user --remove="all_users"
-fi
 
 #=================================================
 # RELOAD NGINX
