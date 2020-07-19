@@ -3,12 +3,13 @@
 - [Yunohost project](https://yunohost.org)
 - [Owntracks website](http://owntracks.org)
 - [php-owntracks-recorder](https://github.com/tomyvi/php-owntracks-recorder)
+- [php-owntracks-recorder altered version for YunoHost](https://github.com/tituspijean/php-owntracks-recorder)
 
 A location history app for YunoHost, based on Owntracks and its PHP implementation for recording and displaying.
 
 ## Features
 
-- [Owntracks features for a HTTP API](http://owntracks.org/booklet/tech/http/), limited to the [features implemented by the PHP recorder](https://github.com/tomyvi/php-owntracks-recorder#features). Notably, no Friends feature.
+- [Owntracks features for a HTTP API](http://owntracks.org/booklet/tech/http/), limited to the [features implemented by the PHP recorder](https://github.com/tomyvi/php-owntracks-recorder#features). Notably, no Friends feature. The [upstream PHP recorder has been tweaked](https://github.com/tituspijean/php-owntracks-recorder) to remove a cumbersome PHP dependency.
 - Multi-user: each YunoHost user can connect though basic HTTP authentication, and has only access to their data.
 
 ## Installation

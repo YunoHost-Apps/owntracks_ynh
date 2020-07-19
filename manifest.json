@@ -6,21 +6,21 @@
 		"en": "Keep track of your location history",
 		"fr": "Gérez votre historique de géolocalisation"
 	},
-	"version": "0.1-beta.8",
+	"version": "0.1~ynh9",
 	"url": "http://owntracks.org/",
-	"license": "free",
+	"license": "GPL-3.0",
 	"maintainer": {
 		"name": "tituspijean",
 		"email": "tituspijean@outlook.com",
 		"url": "https://github.com/tituspijean/owntracks_ynh"
 	},
 	"requirements": {
-		"yunohost": ">= 2.7.2"
+		"yunohost": ">= 3.7"
 	},
 	"multi_instance": true,
 	"services": [
 		"nginx",
-		"php5-fpm",
+		"php7.0-fpm",
 		"mysql"
 	],
 	"arguments": {
@@ -51,10 +51,10 @@
 					"fr": "Choisissez un utilisateur pour Owntracks"
 				},
 				"help": {
-					"en": "If public, this user's trace will be public.",
-					"fr": "Si publique, les traces de cet utilisateur seront publiques."
+					"en": "Mandatory if the app is set to public. This user's traces will be displayed to visitors.",
+					"fr": "Obligatoire si l'app est publique. Les traces de cet utilisateur seront montrées aux visiteurs."
 				},
-				"optional": "true"
+				"optional": true
 			},
 			{
 				"name": "is_public",
@@ -65,7 +65,7 @@
 				},
 				"help": {
 					"en": "If public, anyone will be able to see the owntracks record from specified user.",
-					"fr": "Si publique, quiconque aura accès aux traces owntracks de l'utilisateur specifié."
+					"fr": "Si publique, quiconque aura accès aux traces owntracks de l'utilisateur spécifié."
 				},
 				"default": false
 			}

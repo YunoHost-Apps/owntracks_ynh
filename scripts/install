@@ -40,6 +40,7 @@ app=$YNH_APP_INSTANCE_NAME
 #=================================================
 # CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
 #=================================================
+ynh_script_progression --message="Validating installation parameters..."
 
 final_path=/var/www/$app
 test ! -e "$final_path" || ynh_die "This path already contains a folder"
@@ -49,44 +50,45 @@ then
     ynh_die "You must set up an user if owntracks is public"
 fi
 
-# Normalize the url path syntax
-path_url=$(ynh_normalize_url_path $path_url)
-
-# Check web path availability
-ynh_webpath_available $domain $path_url
 # Register (book) web path
-ynh_webpath_register $app $domain $path_url
+ynh_webpath_register --app=$app --domain=$domain --path_url=$path_url
 
 #=================================================
 # STORE SETTINGS FROM MANIFEST
 #=================================================
+ynh_script_progression --message="Storing installation settings..."
 
-ynh_app_setting_set $app domain $domain
-ynh_app_setting_set $app path $path_url
+ynh_app_setting_set --app=$app --key=domain --value=$domain
+ynh_app_setting_set --app=$app --key=path --value=$path_url
+ynh_app_setting_set --app=$app --key=user --value=$user
 
 #=================================================
 # STANDARD MODIFICATIONS
 #=================================================
 # CREATE A MYSQL DATABASE
 #=================================================
+ynh_script_progression --message="Creating a MySQL database..."
 
-# If your app uses a MySQL database, you can use these lines to bootstrap
-# a database, an associated user and save the password in app settings
-db_name=$(ynh_sanitize_dbid $app)
-ynh_app_setting_set $app db_name $db_name
-ynh_mysql_setup_db $db_name $db_name
+db_name=$(ynh_sanitize_dbid --db_name=$app)
+db_user=$db_name
+ynh_app_setting_set --app=$app --key=db_name --value=$db_name
+ynh_mysql_setup_db --db_user=$db_user --db_name=$db_name
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
+ynh_script_progression --message="Setting up source files..."
 
-ynh_app_setting_set $app final_path $final_path
+ynh_app_setting_set --app=$app --key=final_path --value=$final_path
 # Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source "$final_path"
+ynh_setup_source --dest_dir="$final_path"
 
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
+ynh_script_progression --message="Configuring nginx web server..."
+
+### `ynh_add_nginx_config` will use the file conf/nginx.conf
 
 # Create a dedicated nginx config
 ynh_add_nginx_config
@@ -94,13 +96,15 @@ ynh_add_nginx_config
 #=================================================
 # CREATE DEDICATED USER
 #=================================================
+ynh_script_progression --message="Configuring system user..."
 
 # Create a system user
-ynh_system_user_create $app
+ynh_system_user_create --username=$app
 
 #=================================================
 # PHP-FPM CONFIGURATION
 #=================================================
+ynh_script_progression --message="Configuring php-fpm..."
 
 # Create a dedicated php-fpm config
 ynh_add_fpm_config
@@ -110,6 +114,7 @@ ynh_add_fpm_config
 #=================================================
 # PREPARE MYQSL DATABASE
 #=================================================
+ynh_script_progression --message="Initializing the database..."
 
 ynh_mysql_connect_as $app $db_pwd $db_name < "$final_path/sql/schema.sql"
 
@@ -119,19 +124,6 @@ ynh_mysql_connect_as $app $db_pwd $db_name < "$final_path/sql/schema.sql"
 
 ynh_replace_string "__USER__" "$app" "$final_path/config.inc.php"
 ynh_replace_string "__DB_PWD__" "$db_pwd" "$final_path/config.inc.php"
-
-if [ $is_public -eq 1 ]
-then
-    ynh_replace_string "\$_SERVER\['PHP_AUTH_USER'\]" "$user" "$final_path/map_points.php"
-    ynh_app_setting_set $app unprotected_uris "/"
-fi
-
-#=================================================
-# STORE THE CHECKSUM OF THE CONFIG FILE
-#=================================================
-
-# Calculate and store the config file checksum into the app settings
-# ynh_store_file_checksum "$final_path/CONFIG_FILE"
 
 #=================================================
 # GENERIC FINALIZATION
@@ -143,22 +135,29 @@ fi
 chown -R $app:www-data $final_path
 
 #=================================================
-# SETUP LOGROTATE
+# SETUP PERMISSIONS
 #=================================================
+ynh_script_progression --message="Configuring permissions..."
 
-# Use logrotate to manage application logfile(s)
-ynh_use_logrotate
-
-
-#=================================================
-# SETUP SSOWAT
-#=================================================
-
-# Owntracks requires HTTP basic authentication. Users have to be logged in.
-ynh_app_setting_delete $app skipped_uris
+# Make app public if necessary
+if [ $is_public -eq 1 ]
+then
+	# Everyone can access the app.
+	# The "main" permission is automatically created before the install script.
+  ynh_permission_update --permission "main" --add "visitors"
+else
+	ynh_permission_update --permission "main" --add $user --remove="all_users"
+fi
 
 #=================================================
 # RELOAD NGINX
 #=================================================
+ynh_script_progression --message="Reloading nginx web server..."
 
-systemctl reload nginx
+ynh_systemd_action --service_name=nginx --action=reload
+
+#=================================================
+# END OF SCRIPT
+#=================================================
+
+ynh_script_progression --message="Installation of $app completed" --last
