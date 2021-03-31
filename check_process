@@ -5,7 +5,7 @@
 	; Manifest
 		domain="domain.tld"	(DOMAIN)
 		path="/path"	(PATH)
-		user="john"	(USER)
+		user="package_checker"	(USER)
 		is_public=1	(PUBLIC|public=1|private=0)
 	; Checks
 		pkg_linter=1
