@@ -40,13 +40,6 @@ ynh_print_info --message="Declaring files to be backed up..."
 
 ynh_backup --src_path="$final_path"
 
-#=================================================
-# STANDARD BACKUP STEPS
-#=================================================
-# BACKUP THE APP MAIN DIR
-#=================================================
-
-ynh_backup "$final_path"
 
 #=================================================
 # BACKUP THE NGINX CONFIGURATION

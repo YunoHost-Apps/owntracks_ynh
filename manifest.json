@@ -1,13 +1,18 @@
 {
-	"name": "Owntracks",
+	"name": "OwnTracks",
 	"id": "owntracks",
 	"packaging_format": 1,
 	"description": {
 		"en": "Keep track of your location history",
 		"fr": "Gérez votre historique de géolocalisation"
 	},
-	"version": "0.1~ynh9",
+	"version": "0.1~ynh10",
 	"url": "http://owntracks.org/",
+	"upstream": {
+        "license": "GPL-3.0",
+        "website": "https://owntracks.org/",
+        "code": "https://github.com/tomyvi/php-owntracks-recorder"
+    },
 	"license": "GPL-3.0",
 	"maintainer": {
 		"name": "tituspijean",
@@ -15,7 +20,7 @@
 		"url": "https://github.com/tituspijean/owntracks_ynh"
 	},
 	"requirements": {
-		"yunohost": ">= 4.1.7"
+		"yunohost": ">= 4.2.0"
 	},
 	"multi_instance": true,
 	"services": [
