@@ -115,8 +115,7 @@ ynh_add_fpm_config
 # MODIFY A CONFIG FILE
 #=================================================
 
-ynh_replace_string --match_string="__USER__" --replace_string="$app" --target_file="$final_path/config.inc.php"
-ynh_replace_string --match_string="__DB_PWD__" --replace_string="$db_pwd" --target_file="$final_path/config.inc.php"
+ynh_add_config --template="../conf/config.inc.php" --destination="$final_path/config.inc.php"
 
 #=================================================
 # RELOAD NGINX

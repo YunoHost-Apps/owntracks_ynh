@@ -114,8 +114,7 @@ ynh_mysql_connect_as $app $db_pwd $db_name < "$final_path/sql/schema.sql"
 # MODIFY A CONFIG FILE
 #=================================================
 
-ynh_replace_string "__USER__" "$app" "$final_path/config.inc.php"
-ynh_replace_string "__DB_PWD__" "$db_pwd" "$final_path/config.inc.php"
+ynh_add_config --template="../conf/config.inc.php" --destination="$final_path/config.inc.php"
 
 #=================================================
 # SETUP PERMISSIONS
