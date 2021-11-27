@@ -113,8 +113,12 @@ ynh_mysql_connect_as $app $db_pwd $db_name < "$final_path/sql/schema.sql"
 #=================================================
 # MODIFY A CONFIG FILE
 #=================================================
+ynh_script_progression --message="Adding a configuration file..."
 
 ynh_add_config --template="../conf/config.inc.php" --destination="$final_path/config.inc.php"
+
+chmod 400 "$final_path/config.inc.php"
+chown $app:$app "$final_path/config.inc.php"
 
 #=================================================
 # SETUP PERMISSIONS
