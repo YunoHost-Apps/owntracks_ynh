@@ -42,6 +42,10 @@
 			{
 				"name": "user",
 				"type": "user",
+				"ask": {
+                    "en": "Choose a user",
+                    "fr": "Choisissez un utilisateur"
+                },
 				"help": {
 					"en": "Mandatory if the app is set to public. This user's traces will be displayed to visitors.",
 					"fr": "Obligatoire si l'app est publique. Les traces de cet utilisateur seront montrées aux visiteurs."
