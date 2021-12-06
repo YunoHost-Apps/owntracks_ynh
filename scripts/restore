@@ -66,13 +66,6 @@ chmod -R o-rwx "$final_path"
 chown -R $app:www-data "$final_path"
 
 #=================================================
-# RESTORE USER RIGHTS
-#=================================================
-
-# Restore permissions on app files
-chown -R $app:www-data $final_path
-
-#=================================================
 # RESTORE THE PHP-FPM CONFIGURATION
 #=================================================
 
