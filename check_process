@@ -22,4 +22,4 @@ Notification=none
 ;;; Upgrade options
 	; commit=f86e97b3bf963a15af911f78a9333bdee0b0f41d
 		name=Update check_process
-		manifest_arg=domain=DOMAIN&path=PATH&user=USER&is_public=1&
+		manifest_arg=domain=DOMAIN&path=PATH&user=package_checker&is_public=1&
