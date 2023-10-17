@@ -67,7 +67,7 @@ pushd $install_dir
  	ynh_use_nodejs
 	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install
 	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH NODE_ENV=production yarn build
-	mv $install_dir/dist/ $install_dir/
+	#mv $install_dir/dist/ $install_dir/
 popd
 
 #=================================================
