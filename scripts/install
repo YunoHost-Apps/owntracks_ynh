@@ -37,7 +37,7 @@ ynh_script_progression --message="Configuring NGINX web server..."
 ynh_add_nginx_config
 
 # Create a dedicated php-fpm config
-ynh_add_fpm_config
+#ynh_add_fpm_config
 
 #=================================================
 # SPECIFIC SETUP
