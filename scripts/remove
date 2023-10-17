@@ -20,6 +20,9 @@ ynh_remove_nginx_config
 # Remove the dedicated php-fpm config
 ynh_remove_fpm_config
 
+# Remove NodeJS
+ynh_remove_nodejs
+
 #=================================================
 # END OF SCRIPT
 #=================================================

@@ -10,6 +10,14 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
+# INSTALL DEPENDENCIES
+#=================================================
+ynh_script_progression --message="Installing dependencies..." --weight=7
+
+# Install Nodejs
+ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
+
+#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression --message="Setting up source files..."
@@ -49,6 +57,18 @@ ynh_add_config --template="../conf/config.inc.php" --destination="$install_dir/c
 
 chmod 400 "$install_dir/config.inc.php"
 chown $app:$app "$install_dir/config.inc.php"
+
+#=================================================
+# INSTALL THE LOUNGE
+#=================================================
+ynh_script_progression --message="Installing $app..." --weight=10
+
+pushd $install_dir
+ 	ynh_use_nodejs
+	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install
+	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH NODE_ENV=production yarn build
+	mv $install_dir/dist/ $install_dir
+popd
 
 #=================================================
 # END OF SCRIPT
