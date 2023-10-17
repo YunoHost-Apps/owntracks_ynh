@@ -17,9 +17,6 @@ ynh_script_progression --message="Removing NGINX web server configuration..."
 # Remove the dedicated nginx config
 ynh_remove_nginx_config
 
-# Remove the dedicated php-fpm config
-ynh_remove_fpm_config
-
 # Remove NodeJS
 ynh_remove_nodejs
 

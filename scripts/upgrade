@@ -40,17 +40,6 @@ ynh_script_progression --message="Upgrading NGINX web server configuration..."
 # Create a dedicated nginx config
 ynh_add_nginx_config
 
-# Create a dedicated php-fpm config
-ynh_add_fpm_config
-
-#=================================================
-# SPECIFIC UPGRADE
-#=================================================
-# MODIFY A CONFIG FILE
-#=================================================
-
-ynh_add_config --template="../conf/config.inc.php" --destination="$install_dir/config.inc.php"
-
 #=================================================
 # END OF SCRIPT
 #=================================================
