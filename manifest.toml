@@ -55,6 +55,10 @@ ram.runtime = "50M"
 
     [resources.permissions]
     main.url = "/"
+    api.url = "/api"
+    api.auth_header = false
+    api.show_tile = false
+    api.protected= true
 
     [resources.apt]
     packages = ""
