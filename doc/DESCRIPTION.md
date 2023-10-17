@@ -1,1 +1,1 @@
-Keep track of your location history
+This is a web interface for OwnTracks built as a Vue.js single page application. The recorder itself already ships with some basic web pages, this is a more advanced interface with more functionality, all in one place.

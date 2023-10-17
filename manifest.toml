@@ -10,7 +10,7 @@ version = "2.12.0~ynh1"
 maintainers = ["tituspijean"]
 
 [upstream]
-license = "GPL-3.0"
+license = "MIT"
 website = "https://owntracks.org/"
 code = "https://github.com/tomyvi/php-owntracks-recorder"
 
