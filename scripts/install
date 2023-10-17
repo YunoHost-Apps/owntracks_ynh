@@ -48,6 +48,16 @@ pushd $install_dir
 popd
 
 #=================================================
+# ADD A CONFIGURATION
+#=================================================
+ynh_script_progression --message="Adding a configuration file..." --weight=1
+
+ynh_add_config --template="config.example.js" --destination="$install_dir/public/config/config.js"
+
+chmod 400 "$install_dir/public/config/config.js"
+chown $app:$app "$install_dir/public/config/config.js"
+
+#=================================================
 # END OF SCRIPT
 #=================================================
 
