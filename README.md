@@ -5,7 +5,8 @@ It shall NOT be edited by hand.
 
 # OwnTracks for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/owntracks.svg)](https://dash.yunohost.org/appci/app/owntracks) ![](https://ci-apps.yunohost.org/ci/badges/owntracks.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/owntracks.maintain.svg)  
+[![Integration level](https://dash.yunohost.org/integration/owntracks.svg)](https://dash.yunohost.org/appci/app/owntracks) ![Working status](https://ci-apps.yunohost.org/ci/badges/owntracks.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/owntracks.maintain.svg)
+
 [![Install OwnTracks with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=owntracks)
 
 *[Lire ce readme en français.](./README_fr.md)*
@@ -19,11 +20,9 @@ Keep track of your location history
 
 **Shipped version:** 0.1~ynh10
 
-
-
 ## Screenshots
 
-![](./doc/screenshots/screenshot.png)
+![Screenshot of OwnTracks](./doc/screenshots/screenshot.png)
 
 ## Disclaimers / important information
 
@@ -49,20 +48,21 @@ Keep track of your location history
 
 ## Documentation and resources
 
-* Official app website: https://owntracks.org/
-* Upstream app code repository: https://github.com/tomyvi/php-owntracks-recorder
-* YunoHost documentation for this app: https://yunohost.org/app_owntracks
-* Report a bug: https://github.com/YunoHost-Apps/owntracks_ynh/issues
+* Official app website: <https://owntracks.org/>
+* Upstream app code repository: <https://github.com/tomyvi/php-owntracks-recorder>
+* YunoHost Store: <https://apps.yunohost.org/app/owntracks>
+* Report a bug: <https://github.com/YunoHost-Apps/owntracks_ynh/issues>
 
 ## Developer info
 
 Please send your pull request to the [testing branch](https://github.com/YunoHost-Apps/owntracks_ynh/tree/testing).
 
 To try the testing branch, please proceed like that.
-```
+
+``` bash
 sudo yunohost app install https://github.com/YunoHost-Apps/owntracks_ynh/tree/testing --debug
 or
 sudo yunohost app upgrade owntracks -u https://github.com/YunoHost-Apps/owntracks_ynh/tree/testing --debug
 ```
 
-**More info regarding app packaging:** https://yunohost.org/packaging_apps
+**More info regarding app packaging:** <https://yunohost.org/packaging_apps>
