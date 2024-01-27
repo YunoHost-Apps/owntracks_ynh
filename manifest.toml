@@ -1,0 +1,72 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
+packaging_format = 2
+
+id = "owntracks"
+name = "OwnTracks"
+description.en = "Keep track of your location history"
+description.fr = "Gérez votre historique de géolocalisation"
+
+version = "2.12.0~ynh1"
+
+maintainers = ["tituspijean"]
+
+[upstream]
+license = "MIT"
+website = "https://owntracks.org/"
+code = "https://github.com/tomyvi/php-owntracks-recorder"
+
+[integration]
+yunohost = ">= 11.2"
+architectures = "all"
+multi_instance = true
+ldap = false
+sso = false
+disk = "50M"
+ram.build = "50M"
+ram.runtime = "50M"
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.path]
+    type = "path"
+    default = "/owntracks"
+
+    [install.user]
+    ask.en = "Choose a user"
+    ask.fr = "Choisissez un utilisateur"
+    help.en = "Mandatory if the app is set to public. This user's traces will be displayed to visitors."
+    help.fr = "Obligatoire si l'app est publique. Les traces de cet utilisateur seront montrées aux visiteurs."
+    type = "user"
+    optional = true
+
+    [install.init_main_permission]
+    type = "group"
+    default = "visitors"
+
+[resources]
+    [resources.sources.main]
+    url = "https://github.com/owntracks/frontend/archive/refs/tags/v2.12.0.tar.gz"
+    sha256 = "1695c3e39f5b276fc6d07c7685eaa3df033e37979b240bc8422663e8aa22e130"
+
+    autoupdate.strategy = "latest_github_tag"
+    autoupdate.asset = "tarball"
+
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.permissions]
+    main.url = "/"
+    api.url = "/api"
+    api.auth_header = false
+    api.show_tile = false
+    api.protected= true
+
+    [resources.apt]
+    packages = ""
+    extras.yarn.repo = "deb https://dl.yarnpkg.com/debian/ stable main"
+    extras.yarn.key = "https://dl.yarnpkg.com/debian/pubkey.gpg"
+    extras.yarn.packages = "yarn"

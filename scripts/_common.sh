@@ -4,7 +4,7 @@
 # COMMON VARIABLES
 #=================================================
 
-YNH_PHP_VERSION="7.3"
+nodejs_version=18
 
 #=================================================
 # PERSONAL HELPERS
