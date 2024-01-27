@@ -12,7 +12,7 @@ source /usr/share/yunohost/helpers
 #=================================================
 # INSTALL DEPENDENCIES
 #=================================================
-ynh_script_progression --message="Installing dependencies..." --weight=7
+ynh_script_progression --message="Installing NodeJS..." --weight=7
 
 # Install Nodejs
 ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
@@ -23,39 +23,44 @@ ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 ynh_script_progression --message="Setting up source files..."
 
 # Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir="$install_dir"
+ynh_setup_source --dest_dir="$install_dir/source"
 
 chmod -R o-rwx "$install_dir"
-chown -R $app:www-data "$install_dir"
-
-#=================================================
-# NGINX CONFIGURATION
-#=================================================
-ynh_script_progression --message="Configuring NGINX web server..."
-
-# Create a dedicated nginx config
-ynh_add_nginx_config
+chown -R "$app:www-data" "$install_dir"
 
 #=================================================
 # INSTALL THE LOUNGE
 #=================================================
 ynh_script_progression --message="Installing $app..." --weight=10
 
-pushd $install_dir
- 	ynh_use_nodejs
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH NODE_ENV=production yarn build
+pushd "$install_dir/source"
+    ynh_use_nodejs
+    ynh_exec_warn_less ynh_exec_as "$app" env "$ynh_node_load_PATH" yarn install
+    ynh_exec_warn_less ynh_exec_as "$app" env "$ynh_node_load_PATH" NODE_ENV=production yarn build
 popd
+
+mv "$install_dir/source/dist" "$install_dir/www"
+ynh_secure_remove "$install_dir/source"
 
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
 ynh_script_progression --message="Adding a configuration file..." --weight=1
 
-ynh_add_config --template="config.example.js" --destination="$install_dir/public/config/config.js"
+ynh_add_config --template="config.example.js" --destination="$install_dir/www/public/config/config.js"
 
-chmod 400 "$install_dir/public/config/config.js"
-chown $app:$app "$install_dir/public/config/config.js"
+chmod -R o-rwx "$install_dir"
+chown -R "$app:www-data" "$install_dir"
+
+chmod 400 "$install_dir/www/public/config/config.js"
+
+#=================================================
+# SYSTEM CONFIGURATION
+#=================================================
+ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
+
+# Create a dedicated nginx config
+ynh_add_nginx_config
 
 #=================================================
 # END OF SCRIPT
