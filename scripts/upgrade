@@ -10,6 +10,16 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
+# ENSURE DOWNWARD COMPATIBILITY
+#=================================================
+ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
+
+# Cleanup previous package that ynh_setup_source on install_dir
+if [ ! -d "$install_dir/www" ]; then
+    ynh_secure_remove "$install_dir"/* "$install_dir"/.*
+fi
+
+#=================================================
 # INSTALL DEPENDENCIES
 #=================================================
 ynh_script_progression --message="Updating NodeJS..." --weight=7
@@ -49,12 +59,12 @@ ynh_secure_remove "$install_dir/source"
 #=================================================
 ynh_script_progression --message="Adding a configuration file..." --weight=1
 
-ynh_add_config --template="config.example.js" --destination="$install_dir/www/public/config/config.js"
+ynh_add_config --template="config.example.js" --destination="$install_dir/www/config/config.js"
 
 chmod -R o-rwx "$install_dir"
 chown -R "$app:www-data" "$install_dir"
 
-chmod 400 "$install_dir/www/public/config/config.js"
+chmod 400 "$install_dir/www/config/config.js"
 
 #=================================================
 # NGINX CONFIGURATION
