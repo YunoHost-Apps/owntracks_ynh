@@ -47,16 +47,10 @@ ynh_secure_remove "$install_dir/source"
 #=================================================
 ynh_script_progression --message="Adding a configuration file..." --weight=1
 
-ynh_exec_warn ls -lah "$install_dir/www"
-ynh_exec_warn ls -lah "$install_dir/www/public"
-ynh_exec_warn ls -lah "$install_dir/www/public/config"
+ynh_add_config --template="config.example.js" --destination="$install_dir/www/config/config.js"
 
-ynh_add_config --template="config.example.js" --destination="$install_dir/www/public/config/config.js"
-
-chmod -R o-rwx "$install_dir"
-chown -R "$app:www-data" "$install_dir"
-
-chmod 400 "$install_dir/www/public/config/config.js"
+chmod 400 "$install_dir/www/config/config.js"
+chown "$app:www-data" "$install_dir/www/config/config.js"
 
 #=================================================
 # SYSTEM CONFIGURATION
