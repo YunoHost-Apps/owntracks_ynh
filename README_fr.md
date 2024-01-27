@@ -16,35 +16,25 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 ## Vue d’ensemble
 
-Gérez votre historique de géolocalisation
+Il s'agit d'une interface Web pour OwnTracks construite comme une application Vue.js à page unique. L'enregistreur lui-même est déjà livré avec quelques pages Web de base. Il s'agit d'une interface plus avancée avec plus de fonctionnalités, le tout en un seul endroit.
 
-**Version incluse :** 0.1~ynh10
+### Caractéristiques
+
+- Derniers emplacements connus (c'est-à-dire en direct) :
+- Historique de localisation (points de données, ligne ou les deux)
+- Carte thermique de localisation
+- Ajustez rapidement tous les objets affichés sur la carte
+- Afficher les données dans une plage de date et d'heure spécifique
+- Filtrer par utilisateur ou appareil spécifique
+- Calcul de la distance parcourue
+- Télécharger les données de localisation sélectionnées au format JSON
+- Hautement personnalisable
+
+**Version incluse :** 2.12.0~ynh1
 
 ## Captures d’écran
 
 ![Capture d’écran de OwnTracks](./doc/screenshots/screenshot.png)
-
-## Avertissements / informations importantes
-
-## Caractéristiques
-
-- [Fonctionnalités d'OwnTracks pour une API HTTP](http://owntracks.org/booklet/tech/http/), limité aux [fonctionnalités implémentées par l'enregistreur PHP](https://github.com/tomyvi/php-owntracks-recorder#features). Notamment, pas de fonction Amis. L'[enregistreur PHP en amont a été modifié](https://github.com/tituspijean/php-owntracks-recorder) pour supprimer une dépendance PHP encombrante.
-- Multi-utilisateur : chaque utilisateur YunoHost peut se connecter via l'authentification HTTP de base, et n'a accès qu'à ses données.
-
-## Installation
-
-- Installez l'application sur votre serveur YunoHost
-- Installez l'application mobile sur votre appareil, consultez le [site Web d'OwnTracks](http://owntracks.org)
-- Configurez votre application mobile :
-  - Autorisez-le à accéder à votre emplacement
-  - Préférence > Connexion
-    - Mode : `http privé`
-    - Hébergeur : `https://DOMAIN/PATH/record.php`
-    - Identification
-       - Authentification: `enabled`
-       - Nom d'utilisateur/mot de passe : vos identifiants YNH
-       - ID de l'appareil : comme vous le souhaitez
-   - Reportez-vous à la [documentation d'OwnTracks](http://owntracks.org/booklet) pour les autres paramètres
 
 ## Documentations et ressources
 
