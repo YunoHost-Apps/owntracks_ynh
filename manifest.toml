@@ -14,7 +14,7 @@ maintainers = ["tituspijean"]
 [upstream]
 license = "MIT"
 website = "https://owntracks.org/"
-code = "https://github.com/tomyvi/php-owntracks-recorder"
+code = "https://github.com/owntracks/frontend"
 
 [integration]
 yunohost = ">= 11.2"
