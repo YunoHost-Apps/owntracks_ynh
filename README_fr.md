@@ -30,7 +30,7 @@ Il s'agit d'une interface Web pour OwnTracks construite comme une application Vu
 - Télécharger les données de localisation sélectionnées au format JSON
 - Hautement personnalisable
 
-**Version incluse :** 2.12.0~ynh1
+**Version incluse :** 2022.10.15~ynh1
 
 ## Captures d’écran
 
