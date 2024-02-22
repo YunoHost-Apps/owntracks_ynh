@@ -39,7 +39,7 @@ Il s'agit d'une interface Web pour OwnTracks construite comme une application Vu
 ## Documentations et ressources
 
 * Site officiel de l’app : <https://owntracks.org/>
-* Dépôt de code officiel de l’app : <https://github.com/tomyvi/php-owntracks-recorder>
+* Dépôt de code officiel de l’app : <https://github.com/owntracks/frontend>
 * YunoHost Store: <https://apps.yunohost.org/app/owntracks>
 * Signaler un bug : <https://github.com/YunoHost-Apps/owntracks_ynh/issues>
 
