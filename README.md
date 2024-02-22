@@ -40,7 +40,7 @@ This is a web interface for OwnTracks built as a Vue.js single page application.
 ## Documentation and resources
 
 * Official app website: <https://owntracks.org/>
-* Upstream app code repository: <https://github.com/tomyvi/php-owntracks-recorder>
+* Upstream app code repository: <https://github.com/owntracks/frontend>
 * YunoHost Store: <https://apps.yunohost.org/app/owntracks>
 * Report a bug: <https://github.com/YunoHost-Apps/owntracks_ynh/issues>
 
