@@ -14,7 +14,7 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
 
-# Cleanup previous package that ynh_setup_source on install_dir
+# Cleanup previous package that ynh_setup_source on install_dir --full_replace=1
 if [ ! -d "$install_dir/www" ]; then
     ynh_secure_remove "$install_dir"/* "$install_dir"/.*
 fi
