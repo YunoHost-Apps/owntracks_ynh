@@ -20,6 +20,10 @@ ynh_remove_nginx_config
 # Remove NodeJS
 ynh_remove_nodejs
 
+# Remove service
+ynh_systemd_action --service_name="$app" --action="stop"
+yunohost service remove "$app"
+
 #=================================================
 # END OF SCRIPT
 #=================================================
