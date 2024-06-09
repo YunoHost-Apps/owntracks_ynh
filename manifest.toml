@@ -35,16 +35,18 @@ ram.runtime = "50M"
     default = "/owntracks"
 
     [install.user]
-    ask.en = "Choose a user"
-    ask.fr = "Choisissez un utilisateur"
-    help.en = "Mandatory if the app is set to public. This user's traces will be displayed to visitors."
-    help.fr = "Obligatoire si l'app est publique. Les traces de cet utilisateur seront montrées aux visiteurs."
+    ask.en = "Choose an account"
+    ask.fr = "Choisissez un compte"
+    help.en = "Mandatory if the app is set to public: this account's traces will be loaded by default."
+    help.fr = "Obligatoire si l'app est publique : les traces de ce compte seront chargées par défaut."
     type = "user"
     optional = true
 
     [install.init_main_permission]
     type = "group"
-    default = "visitors"
+    default = "all_users"
+    help.en = "Be wary if you select Visitors: all locations sent to the recorder can be read."
+    help.fr = "Attention si vous sélectionnez Visiteurs : toutes les localisations envoyées à l'enregistreur pourront être lues."
 
 [resources]
     [resources.apt]

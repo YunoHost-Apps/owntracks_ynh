@@ -7,4 +7,5 @@ window.owntracks.config = {
     router: {
         basePath: "/__PATH__",
     },
+    selectedUser: "__USER__",
 };
