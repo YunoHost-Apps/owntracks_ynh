@@ -10,16 +10,6 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# ENSURE DOWNWARD COMPATIBILITY
-#=================================================
-ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
-
-# Cleanup previous package that ynh_setup_source on install_dir
-if [ ! -d "$install_dir/www" ]; then
-    ynh_secure_remove "$install_dir"/* "$install_dir"/.*
-fi
-
-#=================================================
 # INSTALL DEPENDENCIES
 #=================================================
 ynh_script_progression --message="Updating NodeJS..." --weight=7
@@ -45,6 +35,9 @@ chown -R $app:www-data "$install_dir"
 #=================================================
 ynh_script_progression --message="Installing $app..." --weight=10
 
+# Delete current build
+ynh_secure_remove "$install_dir/www"
+
 pushd "$install_dir/source"
     ynh_use_nodejs
     ynh_exec_warn_less ynh_exec_as "$app" env "$ynh_node_load_PATH" yarn install
@@ -57,19 +50,34 @@ ynh_secure_remove "$install_dir/source"
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding a configuration file..." --weight=1
+ynh_script_progression --message="Adding configuration files..." --weight=1
 
 ynh_add_config --template="config.example.js" --destination="$install_dir/www/config/config.js"
 
 chmod -R o-rwx "$install_dir"
 chown -R "$app:www-data" "$install_dir"
 
-chmod 400 "$install_dir/www/config/config.js"
+chmod 640 "$install_dir/www/config/config.js"
+
+ynh_add_config --template="env" --destination="$install_dir/.env"
+
+chmod 600 "$install_dir/.env"
+chown "$app:$app" "$install_dir/.env"
 
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
 ynh_script_progression --message="Upgrading NGINX web server configuration..."
+
+# Create a dedicated systemd config
+ynh_add_systemd_config
+
+# Add log files
+mkdir -p "/var/log/$app/"
+chmod 660 "/var/log/$app/"
+chown "$app:$app" "/var/log/$app/"
+
+yunohost service add "$app" --description="Owntracks recorder" --log="/var/log/$app/$app.log"
 
 # Create a dedicated nginx config
 ynh_add_nginx_config

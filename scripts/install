@@ -45,20 +45,42 @@ ynh_secure_remove "$install_dir/source"
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding a configuration file..." --weight=1
+ynh_script_progression --message="Adding configuration files..." --weight=1
 
 ynh_add_config --template="config.example.js" --destination="$install_dir/www/config/config.js"
 
-chmod 400 "$install_dir/www/config/config.js"
+chmod 640 "$install_dir/www/config/config.js"
 chown "$app:www-data" "$install_dir/www/config/config.js"
+
+ynh_add_config --template="env" --destination="$install_dir/.env"
+
+chmod 600 "$install_dir/.env"
+chown "$app:$app" "$install_dir/.env"
 
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
 ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
 
+# Create a dedicated systemd config
+ynh_add_systemd_config
+
+# Add log files
+mkdir -p "/var/log/$app/"
+chmod 660 "/var/log/$app/"
+chown "$app:$app" "/var/log/$app/"
+
+yunohost service add "$app" --description="Owntracks recorder" --log="/var/log/$app/$app.log"
+
 # Create a dedicated nginx config
 ynh_add_nginx_config
+
+#=================================================
+# START SYSTEMD SERVICE
+#=================================================
+ynh_script_progression --message="Starting $app's systemd service..." --weight=1
+
+ynh_systemd_action --service_name="$app" --action="start" --log_path="/var/log/$app/$app.log"
 
 #=================================================
 # END OF SCRIPT
