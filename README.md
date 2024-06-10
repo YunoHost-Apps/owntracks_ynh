@@ -9,7 +9,7 @@ It shall NOT be edited by hand.
 
 [![Install OwnTracks with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=owntracks)
 
-*[Read this README is other languages.](./ALL_README.md)*
+*[Read this README in other languages.](./ALL_README.md)*
 
 > *This package allows you to install OwnTracks quickly and simply on a YunoHost server.*  
 > *If you don't have YunoHost, please consult [the guide](https://yunohost.org/install) to learn how to install it.*
@@ -31,7 +31,7 @@ This is a web interface for OwnTracks built as a Vue.js single page application.
 - Highly customisable
 
 
-**Shipped version:** 2.12.0~ynh1
+**Shipped version:** 2.14.0~ynh1
 
 ## Screenshots
 
