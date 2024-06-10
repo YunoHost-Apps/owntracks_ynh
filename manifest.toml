@@ -7,7 +7,7 @@ name = "OwnTracks"
 description.en = "Keep track of your location history"
 description.fr = "Gérez votre historique de géolocalisation"
 
-version = "2.12.0~ynh2"
+version = "2.14.0~ynh1"
 
 maintainers = ["tituspijean"]
 
@@ -59,8 +59,8 @@ ram.runtime = "50M"
     extras.yarn.packages = "yarn"
 
     [resources.sources.main]
-    url = "https://github.com/owntracks/frontend/archive/refs/tags/v2.12.0.tar.gz"
-    sha256 = "1695c3e39f5b276fc6d07c7685eaa3df033e37979b240bc8422663e8aa22e130"
+    url = "https://github.com/owntracks/frontend/archive/refs/tags/v2.14.0.tar.gz"
+    sha256 = "862deab66ac38bb517f5446b6aea0c9efaf6dffe56806542dec36849af7d832f"
 
     autoupdate.strategy = "latest_github_release"
     autoupdate.asset = "tarball"
