@@ -31,7 +31,7 @@ This is a web interface for OwnTracks built as a Vue.js single page application.
 - Highly customisable
 
 
-**分发版本：** 2.15.0~ynh1
+**分发版本：** 2.15.2~ynh1
 
 ## 截图
 
