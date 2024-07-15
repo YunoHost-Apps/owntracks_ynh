@@ -5,7 +5,7 @@ EZ editatu eskuz.
 
 # OwnTracks YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/owntracks.svg)](https://dash.yunohost.org/appci/app/owntracks) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/owntracks.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/owntracks.maintain.svg)
+[![Integrazio maila](https://dash.yunohost.org/integration/owntracks.svg)](https://ci-apps.yunohost.org/ci/apps/owntracks/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/owntracks.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/owntracks.maintain.svg)
 
 [![Instalatu OwnTracks YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=owntracks)
 

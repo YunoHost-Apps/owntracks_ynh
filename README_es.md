@@ -5,7 +5,7 @@ No se debe editar a mano.
 
 # OwnTracks para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/owntracks.svg)](https://dash.yunohost.org/appci/app/owntracks) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/owntracks.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/owntracks.maintain.svg)
+[![Nivel de integración](https://dash.yunohost.org/integration/owntracks.svg)](https://ci-apps.yunohost.org/ci/apps/owntracks/) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/owntracks.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/owntracks.maintain.svg)
 
 [![Instalar OwnTracks con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=owntracks)
 
