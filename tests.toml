@@ -8,6 +8,6 @@ test_format = 1.0
     # Tests to run
     # ------------
 
-    args.user = ""
+    args.user = "package_checker"
     test_upgrade_from.95f33dfb.name = "Upgrade from packaging v1"
     
