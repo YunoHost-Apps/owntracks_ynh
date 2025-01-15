@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # OwnTracks untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/owntracks.svg)](https://ci-apps.yunohost.org/ci/apps/owntracks/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/owntracks.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/owntracks.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/owntracks)](https://ci-apps.yunohost.org/ci/apps/owntracks/)
+![Status kerja](https://apps.yunohost.org/badge/state/owntracks)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/owntracks)
 
 [![Pasang OwnTracks dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=owntracks)
 
@@ -31,7 +33,7 @@ This is a web interface for OwnTracks built as a Vue.js single page application.
 - Highly customisable
 
 
-**Versi terkirim:** 2.15.3~ynh1
+**Versi terkirim:** 2.15.3~ynh2
 
 ## Tangkapan Layar
 
@@ -40,7 +42,7 @@ This is a web interface for OwnTracks built as a Vue.js single page application.
 ## Dokumentasi dan sumber daya
 
 - Website aplikasi resmi: <https://owntracks.org/>
-- Repositori kode aplikasi hulu: <https://github.com/owntracks/frontend>
+- Depot kode aplikasi hulu: <https://github.com/owntracks/frontend>
 - Gudang YunoHost: <https://apps.yunohost.org/app/owntracks>
 - Laporkan bug: <https://github.com/YunoHost-Apps/owntracks_ynh/issues>
 

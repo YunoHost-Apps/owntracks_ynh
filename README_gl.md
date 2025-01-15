@@ -5,7 +5,9 @@ NON debe editarse manualmente.
 
 # OwnTracks para YunoHost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/owntracks.svg)](https://ci-apps.yunohost.org/ci/apps/owntracks/) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/owntracks.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/owntracks.maintain.svg)
+[![Nivel de integración](https://apps.yunohost.org/badge/integration/owntracks)](https://ci-apps.yunohost.org/ci/apps/owntracks/)
+![Estado de funcionamento](https://apps.yunohost.org/badge/state/owntracks)
+![Estado de mantemento](https://apps.yunohost.org/badge/maintained/owntracks)
 
 [![Instalar OwnTracks con YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=owntracks)
 
@@ -31,7 +33,7 @@ This is a web interface for OwnTracks built as a Vue.js single page application.
 - Highly customisable
 
 
-**Versión proporcionada:** 2.15.3~ynh1
+**Versión proporcionada:** 2.15.3~ynh2
 
 ## Capturas de pantalla
 

@@ -5,7 +5,9 @@ Il NE doit PAS être modifié à la main.
 
 # OwnTracks pour YunoHost
 
-[![Niveau d’intégration](https://dash.yunohost.org/integration/owntracks.svg)](https://ci-apps.yunohost.org/ci/apps/owntracks/) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/owntracks.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/owntracks.maintain.svg)
+[![Niveau d’intégration](https://apps.yunohost.org/badge/integration/owntracks)](https://ci-apps.yunohost.org/ci/apps/owntracks/)
+![Statut du fonctionnement](https://apps.yunohost.org/badge/state/owntracks)
+![Statut de maintenance](https://apps.yunohost.org/badge/maintained/owntracks)
 
 [![Installer OwnTracks avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=owntracks)
 
@@ -30,7 +32,7 @@ Il s'agit d'une interface Web pour OwnTracks construite comme une application Vu
 - Télécharger les données de localisation sélectionnées au format JSON
 - Hautement personnalisable
 
-**Version incluse :** 2.15.3~ynh1
+**Version incluse :** 2.15.3~ynh2
 
 ## Captures d’écran
 
