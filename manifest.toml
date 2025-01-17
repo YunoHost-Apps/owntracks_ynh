@@ -49,14 +49,6 @@ ram.runtime = "50M"
     help.fr = "Attention si vous sélectionnez Visiteurs : toutes les localisations envoyées à l'enregistreur pourront être lues."
 
 [resources]
-    [resources.apt]
-    extras.recorder.repo = "deb http://repo.owntracks.org/debian __YNH_DEBIAN_VERSION__ main"
-    extras.recorder.key = "https://raw.githubusercontent.com/owntracks/recorder/master/etc/repo.owntracks.org.gpg.key"
-    extras.recorder.packages = ["ot-recorder"]
-
-    extras.yarn.repo = "deb https://dl.yarnpkg.com/debian/ stable main"
-    extras.yarn.key = "https://dl.yarnpkg.com/debian/pubkey.gpg"
-    extras.yarn.packages = "yarn"
 
     [resources.sources.main]
     url = "https://github.com/owntracks/frontend/archive/refs/tags/v2.15.3.tar.gz"
@@ -71,11 +63,16 @@ ram.runtime = "50M"
 
     [resources.data_dir]
 
-    [resources.ports]
-
     [resources.permissions]
     main.url = "/"
     api.url = "/api"
     api.auth_header = false
     api.show_tile = false
     api.protected= true
+
+    [resources.ports]
+
+    [resources.apt]
+    extras.recorder.repo = "deb http://repo.owntracks.org/debian __YNH_DEBIAN_VERSION__ main"
+    extras.recorder.key = "https://raw.githubusercontent.com/owntracks/recorder/master/etc/repo.owntracks.org.gpg.key"
+    extras.recorder.packages = ["ot-recorder"]
