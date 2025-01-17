@@ -25,8 +25,8 @@ ynh_script_progression "Installing $app..."
 ynh_safe_rm "$install_dir/www"
 
 pushd "$install_dir/source"
-    ynh_hide_warnings ynh_exec_as_app yarn install
-    ynh_hide_warnings ynh_exec_as_app NODE_ENV=production yarn build
+    ynh_hide_warnings ynh_exec_as_app npm install
+    ynh_hide_warnings ynh_exec_as_app NODE_ENV=production npm build
 popd
 
 mv "$install_dir/source/dist" "$install_dir/www"
@@ -48,7 +48,6 @@ ynh_script_progression "Upgrading NGINX web server configuration..."
 
 ynh_config_add_systemd
 
-# Add log files
 mkdir -p "/var/log/$app/"
 
 yunohost service add "$app" --description="Owntracks recorder" --log="/var/log/$app/$app.log"
