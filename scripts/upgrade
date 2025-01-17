@@ -8,7 +8,6 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression "Updating NodeJS..."
 
-# Install Nodejs
 ynh_nodejs_install
 
 #=================================================
@@ -16,23 +15,18 @@ ynh_nodejs_install
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-# Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir="$install_dir/source" --full_replace
 
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R $app:www-data "$install_dir"
 #=================================================
 # INSTALL THE LOUNGE
 #=================================================
 ynh_script_progression "Installing $app..."
 
-# Delete current build
 ynh_safe_rm "$install_dir/www"
 
 pushd "$install_dir/source"
-
-    ynh_hide_warnings ynh_exec_as_app node_load_PATH" yarn install
-    ynh_hide_warnings ynh_exec_as_app node_load_PATH" NODE_ENV=production yarn build
+    ynh_hide_warnings ynh_exec_as_app yarn install
+    ynh_hide_warnings ynh_exec_as_app NODE_ENV=production yarn build
 popd
 
 mv "$install_dir/source/dist" "$install_dir/www"
@@ -45,31 +39,20 @@ ynh_script_progression "Adding configuration files..."
 
 ynh_config_add --template="config.example.js" --destination="$install_dir/www/config/config.js"
 
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R "$app:www-data" "$install_dir"
-#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 640 "$install_dir/www/config/config.js"
-
 ynh_config_add --template="env" --destination="$install_dir/.env"
-
-#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 600 "$install_dir/.env"
-#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown "$app:$app" "$install_dir/.env"
 
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
 ynh_script_progression "Upgrading NGINX web server configuration..."
 
-# Create a dedicated systemd config
 ynh_config_add_systemd
 
 # Add log files
 mkdir -p "/var/log/$app/"
-#REMOVEME? Assuming ynh_config_add_logrotate is called, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 660 "/var/log/$app/"
-#REMOVEME? Assuming ynh_config_add_logrotate is called, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown "$app:$app" "/var/log/$app/"
 
 yunohost service add "$app" --description="Owntracks recorder" --log="/var/log/$app/$app.log"
 
-# Create a dedicated nginx config
 ynh_config_add_nginx
 
 #=================================================
