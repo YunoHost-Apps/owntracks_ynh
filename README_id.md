@@ -33,7 +33,7 @@ This is a web interface for OwnTracks built as a Vue.js single page application.
 - Highly customisable
 
 
-**Versi terkirim:** 2.15.3~ynh1
+**Versi terkirim:** 2.15.3~ynh2
 
 ## Tangkapan Layar
 

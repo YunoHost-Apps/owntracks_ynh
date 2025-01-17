@@ -33,7 +33,7 @@ This is a web interface for OwnTracks built as a Vue.js single page application.
 - Highly customisable
 
 
-**Geleverde versie:** 2.15.3~ynh1
+**Geleverde versie:** 2.15.3~ynh2
 
 ## Schermafdrukken
 
