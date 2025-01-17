@@ -5,7 +5,9 @@ No se debe editar a mano.
 
 # OwnTracks para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/owntracks.svg)](https://ci-apps.yunohost.org/ci/apps/owntracks/) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/owntracks.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/owntracks.maintain.svg)
+[![Nivel de integración](https://apps.yunohost.org/badge/integration/owntracks)](https://ci-apps.yunohost.org/ci/apps/owntracks/)
+![Estado funcional](https://apps.yunohost.org/badge/state/owntracks)
+![Estado En Mantención](https://apps.yunohost.org/badge/maintained/owntracks)
 
 [![Instalar OwnTracks con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=owntracks)
 
@@ -46,7 +48,7 @@ This is a web interface for OwnTracks built as a Vue.js single page application.
 
 ## Información para desarrolladores
 
-Por favor enviar sus correcciones a la [`branch testing`](https://github.com/YunoHost-Apps/owntracks_ynh/tree/testing
+Por favor enviar sus correcciones a la [rama `testing`](https://github.com/YunoHost-Apps/owntracks_ynh/tree/testing).
 
 Para probar la rama `testing`, sigue asÍ:
 
