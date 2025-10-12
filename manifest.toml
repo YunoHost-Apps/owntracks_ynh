@@ -19,7 +19,7 @@ code = "https://github.com/owntracks/frontend"
 [integration]
 yunohost = ">= 12.0.9"
 helpers_version = "2.1"
-architectures = "all"
+architectures = ["amd64", "arm64", "armhf"]
 multi_instance = true
 
 ldap = false
@@ -77,6 +77,9 @@ ram.runtime = "50M"
     [resources.ports]
 
     [resources.apt]
-    extras.recorder.repo = "deb http://repo.owntracks.org/debian __YNH_DEBIAN_VERSION__ main"
-    extras.recorder.key = "https://raw.githubusercontent.com/owntracks/recorder/master/etc/repo.owntracks.org.gpg.key"
-    extras.recorder.packages = ["ot-recorder"]
+    packages = []
+
+    [resources.apt.extras.recorder]
+    repo = "deb http://repo.owntracks.org/debian __YNH_DEBIAN_VERSION__ main"
+    key = "https://raw.githubusercontent.com/owntracks/recorder/master/etc/repo-v2.owntracks.org.gpg.key"
+    packages = ["ot-recorder"]
